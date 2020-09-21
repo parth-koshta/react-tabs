@@ -7,14 +7,20 @@ const Tab = ({ data = [], initialActiveItem = 1 }) => {
     const changeTab = (index) => {
         if (index > activeItem) {
             setAnimateClass('animate-right');
+            setTimeout(() => {
+                setAnimateClass('');
+            }, 100);
         } else {
             setAnimateClass('animate-left');
+            setTimeout(() => {
+                setAnimateClass('');
+            }, 100);
         }
 
         setActiveItem(index);
     }
     return (
-        <div>
+        <div className='wrapper'>
             <div className='tab-row'>
                 {
                     data.map((item, index) => <div key={index} className={`tab-item`} onClick={() => changeTab(index)}>
@@ -22,15 +28,15 @@ const Tab = ({ data = [], initialActiveItem = 1 }) => {
                         {index === activeItem &&
                             <div>
                                 <div className={`indicator ${animateClass}`} />
-                                <div className={`item ${animateClass}`}>{
-                                    data[activeItem].render()
-                                }</div>
                             </div>
 
                         }
                     </div>
                     )
                 }
+                <div className={`item ${animateClass}`}>{
+                                    data[activeItem].render()
+                                }</div> 
             </div>
 
         </div>

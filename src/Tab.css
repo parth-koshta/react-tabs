@@ -1,6 +1,11 @@
+.wrapper {
+    background-color: peachpuff;
+}
+
 .tab-row {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .tab-item {
@@ -38,6 +43,7 @@
     padding: 1rem 0;
     position: absolute;
     width: 100vw;
+    top: 4rem;
 }
 
 @keyframes run-right {
