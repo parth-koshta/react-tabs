@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Tab.css'
 
 const Tab = ({ data = [], initialActiveItem = 1 }) => {
     const [activeItem, setActiveItem] = useState(initialActiveItem - 1);
-    const [animateClass, setAnimateClass] = useState('')
+    const [animateClass, setAnimateClass] = useState('');
+    const [wrapperHeight, setWrapperHeight] = useState('65px');
+
+    useEffect(() => {
+        const height = document.getElementById('item').clientHeight;
+        console.log(height, 'height')
+        setWrapperHeight((65 + height) + 'px');
+    }, [activeItem])
+
     const changeTab = (index) => {
         if (index > activeItem) {
             setAnimateClass('animate-right');
@@ -20,7 +28,7 @@ const Tab = ({ data = [], initialActiveItem = 1 }) => {
         setActiveItem(index);
     }
     return (
-        <div className='wrapper'>
+        <div className='wrapper' style={{ height: wrapperHeight }}>
             <div className='tab-row'>
                 {
                     data.map((item, index) => <div key={index} className={`tab-item`} onClick={() => changeTab(index)}>
@@ -34,9 +42,9 @@ const Tab = ({ data = [], initialActiveItem = 1 }) => {
                     </div>
                     )
                 }
-                <div className={`item ${animateClass}`}>{
-                                    data[activeItem].render()
-                                }</div> 
+                <div id='item' className={`item ${animateClass}`}>{
+                    data[activeItem].render()
+                }</div>
             </div>
 
         </div>
