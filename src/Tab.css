@@ -1,0 +1,59 @@
+.tab-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-item {
+    margin: 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.indicator {
+    height: 5px;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    
+}
+
+.animate-right {
+    animation: linear;
+    animation-name: run-right;
+    animation-duration: 200ms;
+}
+
+.animate-left {
+    animation: linear;
+    animation-name: run-left;
+    animation-duration: 200ms;
+}
+
+.title {
+    padding: .5rem 0;
+    margin: 0;
+}
+
+.item {
+    padding: 1rem 0;
+    position: absolute;
+    width: 100vw;
+}
+
+@keyframes run-right {
+      0% {
+        left: -100px;
+      }
+      100% {
+        left: 0px;
+      }
+  }
+
+  @keyframes run-left {
+    0% {
+      left: 100px;
+    }
+    100% {
+      left: 0px;
+    }
+}
