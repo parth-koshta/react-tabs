@@ -8,7 +8,6 @@ const Tab = ({ data = [], initialActiveItem = 1 }) => {
 
     useEffect(() => {
         const height = document.getElementById('item').clientHeight;
-        console.log(height, 'height')
         setWrapperHeight((65 + height) + 'px');
     }, [activeItem])
 
